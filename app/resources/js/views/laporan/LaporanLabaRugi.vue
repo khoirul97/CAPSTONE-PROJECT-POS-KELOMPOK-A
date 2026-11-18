@@ -9,6 +9,23 @@
         </div>
 
         <div class="filter">
+          <!-- FILTER BULAN -->
+          <span style="display: flex; align-items: center;">Filter Bulan</span>
+          <el-select
+            v-model="filterBulan"
+            clearable
+            placeholder="Pilih Bulan"
+            style="width: 150px"
+            @change="pilihBulan"
+          >
+            <el-option
+              v-for="b in daftarBulan"
+              :key="b.value"
+              :label="b.label"
+              :value="b.value"
+            />
+          </el-select>
+
           <el-date-picker
             v-model="tanggal"
             type="daterange"
@@ -18,7 +35,7 @@
             value-format="yyyy-MM-dd"
             format="dd-MM-yyyy"
             :clearable="false"
-            @change="muat"
+            @change="pilihTanggalManual"
           />
 
           <el-button
@@ -339,6 +356,24 @@ export default {
   data() {
     return {
       tanggal: [],
+
+      filterBulan: null,
+
+      daftarBulan: [
+        { value: 1, label: 'Januari' },
+        { value: 2, label: 'Februari' },
+        { value: 3, label: 'Maret' },
+        { value: 4, label: 'April' },
+        { value: 5, label: 'Mei' },
+        { value: 6, label: 'Juni' },
+        { value: 7, label: 'Juli' },
+        { value: 8, label: 'Agustus' },
+        { value: 9, label: 'September' },
+        { value: 10, label: 'Oktober' },
+        { value: 11, label: 'November' },
+        { value: 12, label: 'Desember' },
+      ],
+
       loading: false,
       laporan: createDefaultLaporan(),
     };
@@ -619,6 +654,44 @@ export default {
       };
 
       return `${format(dari)} - ${format(sampai)}`;
+    },
+
+    // =====================================================
+    // FILTER BULAN
+    // =====================================================
+
+    pilihBulan(bulan) {
+      if (!bulan) {
+        // Kalau dikosongkan, reset ke hari ini
+        const today = this.getToday();
+        this.tanggal = [today, today];
+        this.muat();
+        return;
+      }
+
+      const now = new Date();
+      const tahun = now.getFullYear();
+
+      // Awal bulan
+      const awal = new Date(tahun, bulan - 1, 1);
+      // Akhir bulan (hari ke-0 dari bulan berikutnya)
+      const akhir = new Date(tahun, bulan, 0);
+
+      const format = (d) => {
+        const y = d.getFullYear();
+        const m = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
+        return `${y}-${m}-${day}`;
+      };
+
+      this.tanggal = [format(awal), format(akhir)];
+      this.muat();
+    },
+
+    pilihTanggalManual() {
+      // Kalau user memilih range manual, reset pilihan bulan
+      this.filterBulan = null;
+      this.muat();
     },
   },
 };

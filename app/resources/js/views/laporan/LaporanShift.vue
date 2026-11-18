@@ -5,6 +5,23 @@
         <span>Laporan Per Shift</span>
 
         <div class="filter">
+          <!-- FILTER BULAN -->
+          <span style="display: flex; align-items: center;">Filter Bulan</span>
+          <el-select
+            v-model="filterBulan"
+            clearable
+            placeholder="Pilih Bulan"
+            style="width: 150px"
+            @change="pilihBulan"
+          >
+            <el-option
+              v-for="b in daftarBulan"
+              :key="b.value"
+              :label="b.label"
+              :value="b.value"
+            />
+          </el-select>
+
           <el-date-picker
             v-model="tanggal"
             type="daterange"
@@ -12,7 +29,7 @@
             start-placeholder="Dari"
             end-placeholder="Sampai"
             value-format="yyyy-MM-dd"
-            @change="muat"
+            @change="pilihTanggalManual"
           />
 
           <el-button
@@ -128,11 +145,37 @@
         </el-table-column>
 
         <el-table-column
+          label="Catatan Buka"
+          min-width="180"
+          show-overflow-tooltip
+        >
+          <template slot-scope="s">
+            <span v-if="s.row.catatan_buka">
+              {{ s.row.catatan_buka }}
+            </span>
+            <span v-else class="text-muted">-</span>
+          </template>
+        </el-table-column>
+
+        <el-table-column
           label="Waktu Tutup"
           width="170"
         >
           <template slot-scope="s">
             {{ formatDateTime(s.row.waktu_tutup) }}
+          </template>
+        </el-table-column>
+
+        <el-table-column
+          label="Catatan Tutup"
+          min-width="180"
+          show-overflow-tooltip
+        >
+          <template slot-scope="s">
+            <span v-if="s.row.catatan_tutup">
+              {{ s.row.catatan_tutup }}
+            </span>
+            <span v-else class="text-muted">-</span>
           </template>
         </el-table-column>
 
@@ -245,6 +288,24 @@ export default {
   data() {
     return {
       tanggal: [],
+
+      filterBulan: null,
+
+      daftarBulan: [
+        { value: 1, label: 'Januari' },
+        { value: 2, label: 'Februari' },
+        { value: 3, label: 'Maret' },
+        { value: 4, label: 'April' },
+        { value: 5, label: 'Mei' },
+        { value: 6, label: 'Juni' },
+        { value: 7, label: 'Juli' },
+        { value: 8, label: 'Agustus' },
+        { value: 9, label: 'September' },
+        { value: 10, label: 'Oktober' },
+        { value: 11, label: 'November' },
+        { value: 12, label: 'Desember' },
+      ],
+
       ringkasan: {
         total_sesi: 0,
         total_transaksi: 0,
@@ -267,6 +328,8 @@ export default {
       today,
       today,
     ];
+
+    // this.filterBulan = Number(today.split('-')[1]);
 
     this.muat();
   },
@@ -402,6 +465,56 @@ export default {
 
       return `${format(dari)} - ${format(sampai)}`;
     },
+
+    // =====================================================
+    // TODAY
+    // =====================================================
+
+    getToday() {
+      const date = new Date();
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    },
+
+    // =====================================================
+    // FILTER BULAN
+    // =====================================================
+
+    pilihBulan(bulan) {
+      if (!bulan) {
+        // Kalau dikosongkan, reset ke hari ini
+        const today = this.getToday();
+        this.tanggal = [today, today];
+        this.muat();
+        return;
+      }
+
+      const now = new Date();
+      const tahun = now.getFullYear();
+
+      // Awal bulan
+      const awal = new Date(tahun, bulan - 1, 1);
+      // Akhir bulan (hari ke-0 dari bulan berikutnya)
+      const akhir = new Date(tahun, bulan, 0);
+
+      const format = (d) => {
+        const y = d.getFullYear();
+        const m = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
+        return `${y}-${m}-${day}`;
+      };
+
+      this.tanggal = [format(awal), format(akhir)];
+      this.muat();
+    },
+
+    pilihTanggalManual() {
+      // Kalau user memilih range manual, reset pilihan bulan
+      this.filterBulan = null;
+      this.muat();
+    },
   },
 };
 </script>
@@ -495,5 +608,9 @@ export default {
   .filter .el-button {
     width: 100%;
   }
+}
+
+.text-muted {
+  color: #c0c4cc;
 }
 </style>

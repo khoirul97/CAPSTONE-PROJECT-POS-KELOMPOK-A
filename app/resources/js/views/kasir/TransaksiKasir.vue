@@ -1349,7 +1349,7 @@ export default {
               <div>Tanggal: ${tanggalStr}</div>
               <div>Waktu: ${waktuStr}</div>
               <div>Pembayaran: ${this.escapeHtml(metode)}</div>
-              <div>Status: <strong>${status}</strong></div>
+              <div>Status: ${status}</div>
             </div>
 
             <div class="garis"></div>

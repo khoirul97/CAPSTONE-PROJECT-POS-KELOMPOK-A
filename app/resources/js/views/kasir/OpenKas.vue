@@ -17,6 +17,13 @@
           <el-descriptions-item label="Kas Awal">
             Rp {{ formatRupiah(sesiAktif.kas_awal) }}
           </el-descriptions-item>
+          <!-- ✅ TAMBAHKAN INI -->
+          <el-descriptions-item label="Catatan Buka">
+            <span v-if="sesiAktif.catatan_buka">
+              {{ sesiAktif.catatan_buka }}
+            </span>
+            <span v-else class="text-muted">-</span>
+          </el-descriptions-item>
         </el-descriptions>
 
         <div class="actions mt-4">
@@ -405,5 +412,9 @@ export default {
 .actions {
   display: flex;
   gap: 8px;
+}
+
+.text-muted {
+  color: #c0c4cc;
 }
 </style>

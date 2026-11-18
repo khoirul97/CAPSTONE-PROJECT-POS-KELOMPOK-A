@@ -4,6 +4,23 @@
       <div slot="header" class="header">
         <span>Laporan Penjualan Per Produk</span>
         <div class="filter">
+          <!-- FILTER BULAN -->
+          <span style="display: flex; align-items: center;">Filter Bulan</span>
+          <el-select
+            v-model="filterBulan"
+            clearable
+            placeholder="Pilih Bulan"
+            style="width: 150px"
+            @change="pilihBulan"
+          >
+            <el-option
+              v-for="b in daftarBulan"
+              :key="b.value"
+              :label="b.label"
+              :value="b.value"
+            />
+          </el-select>
+
           <el-date-picker
             v-model="tanggal"
             type="daterange"
@@ -11,7 +28,7 @@
             start-placeholder="Dari"
             end-placeholder="Sampai"
             value-format="yyyy-MM-dd"
-            @change="muat"
+            @change="pilihTanggalManual"
           />
           <el-button type="primary" icon="el-icon-search" @click="muat">
             Tampilkan
@@ -88,6 +105,23 @@ export default {
   data() {
     return {
       tanggal: [],
+
+      filterBulan: null,
+
+      daftarBulan: [
+        { value: 1, label: 'Januari' },
+        { value: 2, label: 'Februari' },
+        { value: 3, label: 'Maret' },
+        { value: 4, label: 'April' },
+        { value: 5, label: 'Mei' },
+        { value: 6, label: 'Juni' },
+        { value: 7, label: 'Juli' },
+        { value: 8, label: 'Agustus' },
+        { value: 9, label: 'September' },
+        { value: 10, label: 'Oktober' },
+        { value: 11, label: 'November' },
+        { value: 12, label: 'Desember' },
+      ],
       ringkasan: {},
       detail: [],
     };
@@ -95,6 +129,9 @@ export default {
   created() {
     const today = new Date().toISOString().slice(0, 10);
     this.tanggal = [today, today];
+
+    // this.filterBulan = Number(today.split('-')[1]);
+
     this.muat();
   },
   methods: {
@@ -151,6 +188,56 @@ export default {
       };
 
       return `${format(dari)} - ${format(sampai)}`;
+    },
+
+    // =====================================================
+    // TODAY
+    // =====================================================
+
+    getToday() {
+      const date = new Date();
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    },
+
+    // =====================================================
+    // FILTER BULAN
+    // =====================================================
+
+    pilihBulan(bulan) {
+      if (!bulan) {
+        // Kalau dikosongkan, reset ke hari ini
+        const today = this.getToday();
+        this.tanggal = [today, today];
+        this.muat();
+        return;
+      }
+
+      const now = new Date();
+      const tahun = now.getFullYear();
+
+      // Awal bulan
+      const awal = new Date(tahun, bulan - 1, 1);
+      // Akhir bulan (hari ke-0 dari bulan berikutnya)
+      const akhir = new Date(tahun, bulan, 0);
+
+      const format = (d) => {
+        const y = d.getFullYear();
+        const m = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
+        return `${y}-${m}-${day}`;
+      };
+
+      this.tanggal = [format(awal), format(akhir)];
+      this.muat();
+    },
+
+    pilihTanggalManual() {
+      // Kalau user memilih range manual, reset pilihan bulan
+      this.filterBulan = null;
+      this.muat();
     },
   },
 };

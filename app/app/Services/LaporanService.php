@@ -220,6 +220,10 @@ class LaporanService
                     'total_penjualan' => (float) $sesi->total_penjualan,
                     'total_tunai' => (float) $sesi->total_tunai,
                     'total_non_tunai' => (float) $sesi->total_non_tunai,
+
+                    // ✅ TAMBAHKAN INI
+                    'catatan_buka' => $sesi->catatan_buka,
+                    'catatan_tutup' => $sesi->catatan_tutup,
                 ];
             });
 
