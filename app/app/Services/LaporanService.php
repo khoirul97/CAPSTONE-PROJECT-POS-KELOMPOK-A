@@ -653,6 +653,7 @@ class LaporanService
     public function stok(
         $keyword = null,
         $kategoriId = null,
+        $statusStok = null,
         $page = 1,
         $limit = 20
     ) {
@@ -668,6 +669,14 @@ class LaporanService
 
         if ($kategoriId) {
             $baseQuery->where('kategori_id', $kategoriId);
+        }
+
+        // Filter status stok
+        if ($statusStok === 'menipis') {
+            $baseQuery->where('stok', '>', 0)
+                ->whereColumn('stok', '<=', 'stok_minimal');
+        } elseif ($statusStok === 'habis') {
+            $baseQuery->where('stok', '<=', 0);
         }
 
         $ringkasan = [

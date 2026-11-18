@@ -166,6 +166,7 @@ class LaporanController extends BaseController
         $validated = $request->validate([
             'keyword' => 'nullable|string|max:100',
             'kategori_id' => 'nullable|integer',
+            'status_stok' => 'nullable|in:menipis,habis',
             'page' => 'nullable|integer|min:1',
             'limit' => 'nullable|integer|min:1|max:100',
         ]);
@@ -174,6 +175,7 @@ class LaporanController extends BaseController
             'data' => $this->service->stok(
                 $validated['keyword'] ?? null,
                 $validated['kategori_id'] ?? null,
+                $validated['status_stok'] ?? null,
                 $validated['page'] ?? 1,
                 $validated['limit'] ?? 20
             ),

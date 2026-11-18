@@ -34,6 +34,17 @@
             />
           </el-select>
 
+          <el-select
+            v-model="statusStok"
+            clearable
+            placeholder="Semua Status Stok"
+            style="width: 180px"
+            @change="muat"
+          >
+            <el-option label="Stok Menipis" value="menipis" />
+            <el-option label="Stok Habis" value="habis" />
+          </el-select>
+
           <el-button
             type="primary"
             icon="el-icon-search"
@@ -70,10 +81,13 @@
         </el-col>
 
         <el-col :span="6">
-          <el-card shadow="hover" class="stat">
-            <div class="stat-label">
-              Stok Menipis
-            </div>
+          <el-card
+            shadow="hover"
+            class="stat clickable"
+            :class="{ 'stat-active': statusStok === 'menipis' }"
+            @click.native="toggleStatus('menipis')"
+          >
+            <div class="stat-label">Stok Menipis</div>
             <div class="stat-value menipis">
               {{ formatNumber(ringkasan.stok_menipis) }}
             </div>
@@ -81,10 +95,13 @@
         </el-col>
 
         <el-col :span="6">
-          <el-card shadow="hover" class="stat">
-            <div class="stat-label">
-              Stok Habis
-            </div>
+          <el-card
+            shadow="hover"
+            class="stat clickable"
+            :class="{ 'stat-active': statusStok === 'habis' }"
+            @click.native="toggleStatus('habis')"
+          >
+            <div class="stat-label">Stok Habis</div>
             <div class="stat-value habis">
               {{ formatNumber(ringkasan.stok_habis) }}
             </div>
@@ -289,6 +306,8 @@ export default {
         stok_menipis: 0,
         stok_habis: 0,
       },
+
+      statusStok: null, // 'menipis' | 'habis' | null
     };
   },
 
@@ -310,6 +329,7 @@ export default {
         const res = await laporanStok({
           keyword: this.keyword || undefined,
           kategori_id: this.kategoriId || undefined,
+          status_stok: this.statusStok || undefined,
           page: this.halaman,
           limit: this.limit,
         });
@@ -416,6 +436,11 @@ export default {
 
     formatNumber(value) {
       return Number(value || 0).toLocaleString('id-ID');
+    },
+
+    toggleStatus(status) {
+      this.statusStok = this.statusStok === status ? null : status;
+      this.muat();
     },
   },
 };
@@ -561,5 +586,15 @@ export default {
   .stat {
     margin-bottom: 12px;
   }
+}
+
+.clickable {
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.stat-active {
+  border-color: #409eff;
+  box-shadow: 0 0 0 2px rgba(64, 158, 255, 0.2);
 }
 </style>
