@@ -1,0 +1,554 @@
+/* Default Light Mode */
+html, body {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+    transition: background-color 0.3s, color 0.3s;
+}
+  
+/* Mode Gelap */
+.dark-mode {
+    --background-color: #242424 !important; /* Background utama */
+    --text-color: #ffffff !important; /* Warna teks */
+    --border-color: #181818 !important;
+    --hover-color: #333 !important;
+    --active-color: #233f82 !important;
+}
+
+/* Body */
+.dark-mode body,
+.dark-mode .navbar,
+.dark-mode .sidebar-container, 
+.dark-mode .el-menu-item,
+.dark-mode .sidebar-logo-container,
+.dark-mode .card,
+.dark-mode .title-2,
+.dark-mode .el-submenu,
+.dark-mode .el-submenu-item,
+.dark-mode .filter-card,
+.dark-mode .right-filter,
+.dark-mode .grid-container,
+.dark-mode .el-dialog,
+.dark-mode .el-dialog__headerbtn,
+.dark-mode .el-dialog__body,
+.dark-mode .el-dialog__footer,
+.dark-mode .notification-dropdown,
+.dark-mode .dropdown-header,
+.dark-mode .notification-tabs,
+.dark-mode .el-tabs,
+.dark-mode .el-alert,
+.dark-mode input {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+}
+
+.dark-mode .navbar,
+.dark-mode .sidebar-container {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6)  !important;
+}
+
+/* Mode Gelap */
+.dark-mode #app .sidebar-container .nest-menu .el-submenu > .el-submenu__title,
+.dark-mode #app .sidebar-container .el-submenu .el-menu-item {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+}
+
+/* Mode Gelap */
+.dark-mode [style*="color: rgb(51, 51, 51)"],
+.dark-mode [style*="background-color: rgb(255, 255, 255)"] {
+    color: #fff !important;
+    background-color: var(--background-color) !important;
+}
+
+/* Mode Gelap untuk el-loading */
+.dark-mode .el-loading-mask {
+    background-color: rgba(0, 0, 0, 0.7) !important; /* Latar belakang lebih gelap */
+    color: #fff !important; /* Warna teks */
+}
+
+.dark-mode .el-loading-spinner .circular {
+    stroke: #fff !important; /* Warna animasi loading */
+}
+
+.dark-mode .el-loading-text {
+    color: #fff !important; /* Warna teks loading */
+}
+
+/* Mode Gelap */
+.dark-mode .navbar .right-menu .right-menu-item {
+    color: #fff !important;
+}
+
+/* Navbar */
+.dark-mode .el-menu {
+    background-color: #202020 !important;
+    border-right: 1px solid var(--border-color) !important;
+}
+
+.dark-mode .el-menu-item,
+.dark-mode .el-submenu__title {
+    color: var(--text-color) !important;
+}
+
+.dark-mode .el-menu-item:hover,
+.dark-mode .el-submenu__title:hover {
+    background-color: var(--hover-color) !important;
+}
+
+/* Sidebar */
+.dark-mode .el-aside {
+    background-color: #222 !important;
+    color: var(--text-color) !important;
+    border-right: 1px solid var(--border-color) !important;
+}
+
+/* Card */
+.dark-mode .el-card {
+    background-color: #242424 !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+.dark-mode #LOGO_COMPANY {
+    filter: brightness(0) invert(1);
+}
+
+.dark-mode #LOGO_REPORT {
+    filter: brightness(0) invert(1);
+}
+
+/* Table */
+.dark-mode .el-table,
+.dark-mode .el-table-column {
+    background-color: #1e1e1e !important;
+    color: var(--text-color) !important;
+}
+
+.dark-mode .el-table th,
+.dark-mode .el-table td {
+    background-color: #242424 !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Pagination */
+.dark-mode .el-pagination {
+    background-color: #1e1e1e !important;
+    color: var(--text-color) !important;
+}
+
+.dark-mode .el-pagination button,
+.dark-mode .el-pagination span {
+    background-color: #2a2a2a !important;
+    color: var(--text-color) !important;
+}
+
+.dark-mode .el-pagination .el-pager li {
+    background-color: #2a2a2a !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+.dark-mode .el-pagination .el-pager li:hover {
+    background-color: var(--hover-color) !important;
+}
+
+.dark-mode .el-pagination .el-pager li.active {
+    background-color: var(--active-color) !important;
+    color: white !important;
+}
+
+/* Input */
+.dark-mode .el-input__inner {
+    background-color: #222 !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+/* Button */
+.dark-mode .el-button {
+    background-color: #333 !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+.dark-mode .el-button:hover {
+    background-color: var(--hover-color) !important;
+}
+
+/* Dropdown */
+.dark-mode .el-dropdown-menu {
+    background-color: #242424 !important;
+    color: var(--text-color) !important;
+}
+
+.dark-mode .el-dropdown-menu__item:hover {
+    background-color: var(--hover-color) !important;
+}
+
+/* Dialog / Modal */
+.dark-mode .el-dialog {
+    background-color: #1e1e1e !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+/* Tooltip */
+.dark-mode .el-tooltip__popper {
+    background-color: #333 !important;
+    color: var(--text-color) !important;
+}
+
+/* Select */
+.dark-mode .el-select-dropdown {
+    background-color: #242424 !important;
+    color: var(--text-color) !important;
+}
+
+.dark-mode .el-radio-button__orig-radio:checked + .el-radio-button__inner {
+    background-color: #242424 !important;
+    color: #999 !important;
+}
+
+.dark-mode .el-select-dropdown__item:hover {
+    background-color: var(--hover-color) !important;
+}
+
+/* Radio & Checkbox */
+.dark-mode .el-radio,
+.dark-mode .el-checkbox {
+    color: var(--text-color) !important;
+}
+
+.dark-mode .el-radio__inner,
+.dark-mode .el-checkbox__inner {
+    border-color: var(--text-color) !important;
+}
+
+.dark-mode .el-radio__input.is-checked .el-radio__inner,
+.dark-mode .el-checkbox__input.is-checked .el-checkbox__inner {
+    background-color: var(--active-color) !important;
+    border-color: var(--active-color) !important;
+}
+
+/* Slider */
+.dark-mode .el-slider__bar {
+    background-color: var(--active-color) !important;
+}
+
+.dark-mode .el-slider__button {
+    border-color: var(--active-color) !important;
+    background-color: var(--active-color) !important;
+}
+
+/* Progress Bar */
+.dark-mode .el-progress-bar__inner {
+    background-color: var(--active-color) !important;
+}
+
+/* Tabs */
+.dark-mode .el-tabs__nav {
+    background-color: #242424 !important;
+}
+
+.dark-mode .el-tabs__item {
+    color: var(--text-color) !important;
+}
+
+.dark-mode .el-tabs__item.is-active {
+    border-bottom: 2px solid var(--active-color) !important;
+    color: var(--active-color) !important;
+}
+
+/* Switch */
+.dark-mode .el-switch__core {
+    background-color: #555 !important;
+}
+
+.dark-mode .el-switch__core:hover {
+    background-color: var(--active-color) !important;
+}
+
+.dark-mode .el-switch__core::after {
+    background-color: white !important;
+}
+
+/* Native HTML Elements */
+.dark-mode select,
+.dark-mode input,
+.dark-mode textarea {
+    background-color: #222 !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+.dark-mode button {
+    background-color: #333 !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+.dark-mode button:hover {
+    background-color: var(--hover-color) !important;
+}
+
+/* Link */
+.dark-mode a {
+    color: var(--active-color) !important;
+}
+
+/* .dark-mode a:hover {
+    text-decoration: underline;
+} */
+
+/* Mode Gelap untuk el-dropdown */
+.dark-mode .el-dropdown-menu {
+    background-color: var(--background-color) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+.dark-mode .el-dropdown-menu__item {
+    color: var(--text-color) !important;
+}
+
+.dark-mode .el-dropdown-menu__item:hover {
+    background-color: var(--hover-color) !important;
+}
+
+/* Mode Gelap untuk el-popper */
+.dark-mode .el-popper {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.6) !important; /* Tambahkan efek shadow agar lebih elegan */
+}
+
+/* Jika ada panah pada popper */
+.dark-mode .el-popper[x-placement^="top"] .popper__arrow::after,
+.dark-mode .el-popper[x-placement^="bottom"] .popper__arrow::after,
+.dark-mode .el-popper[x-placement^="left"] .popper__arrow::after,
+.dark-mode .el-popper[x-placement^="right"] .popper__arrow::after {
+    border-color: var(--background-color) !important;
+}
+
+/* Mode Gelap untuk el-dialog */
+.dark-mode .el-dialog {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.6) !important; /* Tambahkan efek shadow agar lebih elegan */
+}
+
+/* Mode Gelap untuk Header Dialog */
+.dark-mode .el-dialog__header,
+.dark-mode .el-dialog__title,
+.dark-mode form {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+/* Mode Gelap untuk Footer Dialog */
+.dark-mode .el-dialog__footer {
+    background-color: var(--background-color) !important;
+    border-top: 1px solid var(--border-color) !important;
+}
+
+/* Mode Gelap untuk Tombol Close */
+.dark-mode .el-dialog__headerbtn .el-dialog__close {
+    color: var(--text-color) !important;
+    opacity: 0.8;
+}
+
+.dark-mode .el-dialog__headerbtn .el-dialog__close:hover {
+    opacity: 1;
+}
+
+/* Mode Gelap untuk Item Menu yang Aktif */
+.dark-mode #app .sidebar-container .el-submenu .el-menu-item.is-active {
+    color: var(--active-color) !important; /* Warna tetap sama agar tetap menonjol */
+    background-color: var(--background-color) !important; /* Sesuaikan dengan tema dark */
+    font-weight: bold;
+}
+
+/* Mode Gelap untuk el-tree-node__content */
+.dark-mode .el-tree-node__content {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+}
+
+/* Mode Gelap untuk el-tree-node saat dipilih atau hover */
+.dark-mode .el-tree-node__content:hover,
+.dark-mode .el-tree-node.is-current > .el-tree-node__content {
+    background-color: var(--hover-color) !important; /* Warna lebih terang saat hover */
+    color: var(--text-color) !important;
+}
+
+/* Mode Gelap untuk el-select-dropdown__item */
+.dark-mode .el-select-dropdown__item {
+    color: var(--text-color) !important; /* Warna teks agar jelas */
+    background-color: var(--background-color) !important; /* Sesuaikan dengan tema dark */
+}
+
+/* Mode Gelap untuk Item yang Dipilih atau Hover */
+.dark-mode .el-select-dropdown__item:hover,
+.dark-mode .el-select-dropdown__item.selected {
+    background-color: var(--hover-color) !important; /* Warna lebih terang saat dipilih/hover */
+    color: var(--text-color) !important;
+}
+
+/* Mode Gelap untuk Sidebar Logo */
+.dark-mode .sidebar-logo-container .sidebar-logo-link .sidebar-title {
+    color: var(--text-color) !important;
+}
+
+.dark-mode #title_dashboard {
+    color: var(--text-color) !important;
+}
+
+/* Mode Gelap untuk Sidebar Logo */
+.dark-mode .sidebar-logo-container .sidebar-logo-link .sidebar-title {
+    color: var(--text-color) !important;
+}
+
+/* Mode Gelap untuk elemen dengan warna teks hitam */
+.dark-mode [style*="color: rgb(0, 0, 0)"] {
+    color: var(--text-color) !important;
+}
+/* Mode Gelap untuk el-tabs */
+.dark-mode .el-tabs__nav {
+    background-color: var(--background-color) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+.dark-mode .el-tabs__item {
+    color: var(--text-color) !important;
+}
+
+.dark-mode .el-tabs__item:hover {
+    color: var(--active-color) !important;
+}
+
+.dark-mode .el-tabs__item.is-active {
+    border-bottom: 2px solid var(--active-color) !important;
+    color: var(--active-color) !important;
+}
+
+.dark-mode .el-tabs__content {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+}
+/* Mode Gelap untuk el-tabs */
+.dark-mode .el-tabs__item.is-active {
+    color: var(--active-color) !important; /* Warna teks tab aktif */
+    border-bottom: 2px solid var(--active-color) !important; /* Garis bawah tab aktif */
+}
+
+.dark-mode .el-tabs__nav-wrap::after {
+    background-color: var(--border-color) !important; /* Garis bawah navigasi tab */
+}
+
+.dark-mode .el-tabs__active-bar {
+    background-color: var(--active-color) !important;
+}
+/* Mode Gelap untuk el-radio */
+.dark-mode .el-radio {
+    color: var(--text-color) !important;
+}
+
+.dark-mode .el-radio__inner {
+    border-color: var(--text-color) !important;
+    background-color: transparent !important;
+}
+
+.dark-mode .el-radio__input.is-checked .el-radio__inner {
+    background-color: var(--active-color) !important;
+    border-color: var(--active-color) !important;
+}
+
+.dark-mode .el-radio__input.is-checked .el-radio__inner::after {
+    background-color: #fff !important;
+}
+/* Mode Gelap untuk Label Radio yang Dipilih */
+.dark-mode .el-radio__input.is-checked + .el-radio__label {
+    color: var(--active-color) !important;
+    font-weight: bold;
+}
+
+/* Mode Gelap untuk Label Form */
+.dark-mode .el-form-item__label {
+    color: #fff !important;
+}
+
+/* Mode Gelap untuk Header Table */
+.dark-mode .el-table thead {
+    color: #fff !important;
+}
+
+/* Mode Gelap untuk Input */
+.dark-mode .el-input__inner {
+    color: #fff !important;
+}
+
+/* Mode Gelap untuk .sidebar_home */
+.dark-mode .sidebar_home {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+}
+
+.dark-mode .el-menu-item.is-active {
+    color: var(--active-color) !important;
+    font-weight: bold !important;
+}
+.dark-mode .footer_card {
+    background-color: var(--background-color) !important;
+}
+
+.dark-mode .menu_sidebar_tree {
+    background-color: var(--background-color) !important;
+}
+
+.dark-mode p,
+.dark-mode .app-container,
+.dark-mode a,
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4,
+.dark-mode h5,
+.dark-mode h6,
+.dark-mode b,
+.dark-mode .pro-meta,
+.dark-mode .detail-hint,
+.dark-mode .pro-footer,
+.dark-mode .meta-row,
+.dark-mode .pro-title,
+.dark-mode i {
+    color: var(--text-color) !important;
+}
+
+.dark-mode .app-container .right-filter span {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+    border-color: #fff;
+    border-width: 1px;
+}
+
+.dark-mode .el-radio-button__orig-radio:checked+.el-radio-button__inner {
+    border-color: #fff;
+    border-width: 3px;
+}
+
+.dark-mode .el-dialog__header,
+.dark-mode .el-dialog__title,
+.dark-mode .notification-tabs .el-tabs__header,
+.dark-mode .notification-tabs .el-tabs__nav-wrap,
+.dark-mode .notification-tabs .el-tabs__item,
+.dark-mode .notification-tabs .el-tabs__item i,
+.dark-mode .notification-tabs .el-tabs__content, 
+.dark-mode .tab-label,
+.dark-mode .tab-content,
+.dark-mode .notification-item {
+    background: #242424 !important; 
+    color: white;
+    border: none;
+}
