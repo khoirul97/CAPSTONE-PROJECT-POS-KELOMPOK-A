@@ -14,6 +14,8 @@ Aplikasi **Point of Sale (POS)** berbasis Laravel dan Vue.js.
 
 Aplikasi **Point of Sale (POS)** berbasis Laravel dan Vue.js.
 
+<img width="1587" height="2245" alt="POSTER - PENGEMBANGAN SISTEM POINT OF SALES (POS) UNTUK DIGITALISASI PENGELOLAAN TRANSAKSI PADA KEDAI MISS MOJITO" src="https://github.com/user-attachments/assets/0462ef87-f845-409d-ba99-abd6081727e3" />
+
 ## 📋 Persyaratan Sistem
 
 Sebelum menjalankan project, pastikan perangkat sudah memiliki:
