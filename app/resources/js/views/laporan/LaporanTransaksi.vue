@@ -120,7 +120,7 @@
           <el-card shadow="hover" class="stat">
 
             <div class="stat-label">
-              Total Penjualan
+              Total Pembayaran
             </div>
 
             <div class="stat-value">

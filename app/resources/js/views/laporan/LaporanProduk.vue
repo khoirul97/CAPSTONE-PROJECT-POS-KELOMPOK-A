@@ -65,7 +65,7 @@
         </el-col>
         <el-col :span="8">
           <el-card shadow="hover" class="stat">
-            <div class="stat-label">Total Penjualan</div>
+            <div class="stat-label">Total Omzet</div>
             <div class="stat-value">
               Rp {{ formatRupiah(ringkasan.total_penjualan) }}
             </div>

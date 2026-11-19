@@ -131,7 +131,7 @@
           </div>
 
           <div class="row">
-            <span>Penjualan Kotor</span>
+            <span>Penjualan Kotor (Omzet)</span>
             <span>Rp {{ formatRupiah(laporan.pendapatan.penjualan_kotor) }}</span>
           </div>
 

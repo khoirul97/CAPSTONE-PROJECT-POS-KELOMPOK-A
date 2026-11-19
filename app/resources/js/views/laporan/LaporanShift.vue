@@ -73,7 +73,7 @@
         <el-col :span="6">
           <el-card shadow="hover" class="stat">
             <div class="stat-label">
-              Total Penjualan
+              Total Pembayaran
             </div>
 
             <div class="stat-value">
@@ -218,7 +218,7 @@
         </el-table-column>
 
         <el-table-column
-          label="Total Penjualan"
+          label="Total Pembayaran"
           align="right"
           min-width="150"
         >
